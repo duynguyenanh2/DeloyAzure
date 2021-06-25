@@ -5,7 +5,8 @@
 
 trigger:
 - master
-
+stages:
+- stage: Build
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
@@ -24,8 +25,7 @@ variables:
 pool:
   vmImage: ubuntu-latest
 
-stages:
-- stage: Build
+
 steps:
 - task: NodeTool@0
   inputs:
