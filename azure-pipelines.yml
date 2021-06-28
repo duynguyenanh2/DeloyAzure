@@ -29,11 +29,16 @@ steps:
     replaceExistingArchive: true  
 
 - task: PublishBuildArtifacts@1
-
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Visual Studio Enterprise (fbedf7e6-ad1f-4cdb-a307-8147aa1e1f2c)'
     appType: 'webAppLinux'
     appName: 'gidcdevops1'
+    deployToSlotOrASE: true
+    resourceGroupName: 'GIDC_VN_DevOps_rg'
+    slotName: 'production'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    runtimeStack: 'NODE|14-lts'
