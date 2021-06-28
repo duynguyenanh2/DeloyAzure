@@ -35,11 +35,3 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
-
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Visual Studio Enterprise (fbedf7e6-ad1f-4cdb-a307-8147aa1e1f2c)'
-    appType: 'webAppLinux'
-    appName: 'gidcdevops1'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    runtimeStack: 'NODE|14-lts'
